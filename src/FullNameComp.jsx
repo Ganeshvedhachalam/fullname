@@ -10,9 +10,13 @@
     
     const handleSubmit = (e)=>{
         e.preventDefault();
-        setFullname( `Full Name: ${firstname} ${lastname}`)
+        if(firstname&&lastname){
+             setFullname( `Full Name: ${firstname} ${lastname}`)
+             console.log(fullname)
+            }
        
-        console.log(fullname)
+       
+        
        
     }
 
@@ -24,10 +28,9 @@
         setLastname( e.target.value)
 
     }
-    const issubmitdisabled= ()=>{
-        
-        return (!firstname || !lastname)
-    }
+
+    // const isSubmitDisabled = !firstname || !lastname;
+    
 
 
 
@@ -36,12 +39,13 @@
             <div 
             // style={{display:"flex", flexDirection:"column" ,justifyContent:"center",alignItems:"center"} }
             >
-            <form   onSubmit={handleSubmit} style={{ width:"500px",height:"200px"}}>
+                <h1>Full Name Display</h1>
+            <form   onSubmit={handleSubmit} >
 
                 <label>First Name: <input  type="text" value={firstname} onChange={handlechangeFirst}/> </label>
                  <br />
                 <label>Last Name: <input type="text" value ={lastname} onChange={handlechangeLast} /> </label><br />
-                <button type="submit" style={{padding:"5px"}} disabled={issubmitdisabled()}> 
+                <button type="submit" style={{padding:"5px"}} > 
                 Submit
                 </button>
             </form>
